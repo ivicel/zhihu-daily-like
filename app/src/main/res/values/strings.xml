@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">zhizhi</string>
+    <string name="test_string">她：我没生气\r\n求问 AI：她现在生没生气？</string>
+    <string name="title_activity_answer">AnswerActivity</string>
+    <string name="main_title">首页</string>
+    <string name="login">请登录</string>
+    <string name="my_favorite">我的收藏</string>
+    <string name="download_content">离线下载</string>
+    <string name="network_error">网络出错</string>
+</resources>
