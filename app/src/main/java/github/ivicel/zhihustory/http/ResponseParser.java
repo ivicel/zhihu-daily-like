@@ -1,6 +1,7 @@
 package github.ivicel.zhihustory.http;
 
 import android.database.sqlite.SQLiteConstraintException;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -13,6 +14,7 @@ import github.ivicel.zhihustory.db.DatabaseUtil;
 import github.ivicel.zhihustory.db.Image;
 import github.ivicel.zhihustory.db.StoryDetails;
 import github.ivicel.zhihustory.db.Thumbnail;
+import github.ivicel.zhihustory.responsejson.DayStoryJson;
 import github.ivicel.zhihustory.responsejson.LastestStoryJson;
 import github.ivicel.zhihustory.responsejson.StoryContentJson;
 
@@ -30,6 +32,17 @@ public class ResponseParser {
             Gson gson = new Gson();
             lastestStoryJson = gson.fromJson(response, LastestStoryJson.class);
             return lastestStoryJson;
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public static DayStoryJson parseDayStoryJson(String response) {
+        Gson gson = new Gson();
+        try {
+            Log.d(TAG, "parseDayStoryJson: " + response);
+            return gson.fromJson(response, DayStoryJson.class);
         } catch (JsonSyntaxException e) {
             e.printStackTrace();
             return null;

@@ -53,30 +53,28 @@ public class DatabaseUtil {
     }
     
     public static void saveTopStories(List<StoryJson> topStoriesJson, String date) {
+        DataSupport.deleteAll(TopStories.class);
         for (StoryJson storyJson : topStoriesJson) {
-            if (DataSupport.where("story_id = ?", storyJson.storyId).findFirst(TopStories.class)
-                    == null) {
-                try {
-                    TopStories story = new TopStories();
-                    story.setGa_prefix(storyJson.gaPrefix);
-                    story.setStory_id(storyJson.storyId);
-                    story.setTitle(storyJson.storyTitle);
-                    story.setType(storyJson.storyType);
-                    story.setDate(date);
-                    String imageUrl = storyJson.imageUrl;
-                    byte[] byteContent = HttpRequest.getImage(imageUrl);
-                    if (byteContent != null) {
-                        Image image = new Image();
-                        image.setImage(byteContent);
-                        image.setStory_id(story.getStory_id());
-                        image.setDate(date);
-                        image.save();
-                        story.setImage(image);
-                    }
-                    story.save();
-                } catch (SQLiteConstraintException | DataSupportException e) {
-                    Log.d("top stories", Log.getStackTraceString(e));
+            try {
+                TopStories story = new TopStories();
+                story.setGa_prefix(storyJson.gaPrefix);
+                story.setStory_id(storyJson.storyId);
+                story.setTitle(storyJson.storyTitle);
+                story.setType(storyJson.storyType);
+                story.setDate(date);
+                String imageUrl = storyJson.imageUrl;
+                byte[] byteContent = HttpRequest.getImage(imageUrl);
+                if (byteContent != null) {
+                    Image image = new Image();
+                    image.setImage(byteContent);
+                    image.setStory_id(story.getStory_id());
+                    image.setDate(date);
+                    image.save();
+                    story.setImage(image);
                 }
+                story.save();
+            } catch (SQLiteConstraintException | DataSupportException e) {
+                Log.d("top stories", Log.getStackTraceString(e));
             }
         }
     }

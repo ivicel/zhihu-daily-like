@@ -21,6 +21,7 @@ import java.util.List;
 import github.ivicel.zhihustory.db.Image;
 import github.ivicel.zhihustory.db.StoryDetails;
 import github.ivicel.zhihustory.http.HttpRequest;
+import github.ivicel.zhihustory.http.NetworkUtil;
 import github.ivicel.zhihustory.http.ResponseParser;
 import github.ivicel.zhihustory.responsejson.StoryContentJson;
 import okhttp3.Call;
@@ -77,12 +78,12 @@ public class AnswerActivity extends AppCompatActivity {
             // byte[] byteImage = storyDetails.getImage().getImage();
             // mImageView.setImageBitmap(BitmapFactory.decodeByteArray(byteImage, 0, byteImage.length));
 
-        } else {
-            loadDataFromWeb(storyId, storyDate);
+        } else if (NetworkUtil.isNetworkAvailabled(this) ){
+            loadStoryContentFromWeb(storyId, storyDate);
         }
     }
     
-    private void loadDataFromWeb(final String storyId, final String date) {
+    private void loadStoryContentFromWeb(final String storyId, final String date) {
         HttpRequest.getSpefifyStoryById(storyId, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {

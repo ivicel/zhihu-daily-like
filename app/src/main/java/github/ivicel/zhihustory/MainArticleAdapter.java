@@ -95,7 +95,7 @@ public class MainArticleAdapter extends RecyclerView.Adapter<MainArticleAdapter.
     
     @Override
     public int getItemCount() {
-        Log.d(TAG, "getItemCount: " + storiesList.size());
+        // Log.d(TAG, "getItemCount: " + storiesList.size());
         return storiesList.size() + 1;
     }
     
@@ -140,19 +140,19 @@ public class MainArticleAdapter extends RecyclerView.Adapter<MainArticleAdapter.
     public void onBindViewHolder(ViewHolder holder, int position,
             List<Object> payloads) {
         onBindViewHolder(holder, position);
-        Log.d(TAG, "onBindViewHolder: payload parameters");
+        // Log.d(TAG, "onBindViewHolder: payload parameters");
     }
         
     @Override
     public void onViewRecycled(ViewHolder holder) {
         super.onViewRecycled(holder);
-        Log.d(TAG, "onViewRecycled: " + holder.view.toString());
+        // Log.d(TAG, "onViewRecycled: " + holder.view.toString());
     }
     
     
     @Override
     public void onViewDetachedFromWindow(ViewHolder holder) {
         super.onViewDetachedFromWindow(holder);
-        Log.d(TAG, "onViewDetachedFromWindow: " + holder.view.toString());
+        // Log.d(TAG, "onViewDetachedFromWindow: " + holder.view.toString());
     }
 }
