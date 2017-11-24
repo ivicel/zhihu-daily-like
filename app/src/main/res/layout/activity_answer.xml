@@ -10,7 +10,7 @@
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="github.ivicel.zhihustory.AnswerActivity"
+        tools:context="github.ivicel.zhihustory.StoryDetailsActivity"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="8dp">
 
@@ -83,7 +83,7 @@
 
     <!--<ImageView-->
 
-        <!--android:id="@+id/image"-->
+        <!--android:id="@+id/storyImages"-->
         <!--android:layout_width="0dp"-->
         <!--android:layout_height="200dp"-->
         <!--android:scaleType="centerCrop"-->
@@ -105,7 +105,7 @@
         <!--android:layout_marginStart="10dp"-->
         <!--android:textColor="#fff"-->
         <!--android:textSize="18sp"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/image"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/storyImages"-->
         <!--app:layout_constraintLeft_toLeftOf="parent"-->
         <!--app:layout_constraintRight_toRightOf="parent"-->
         <!--tools:text="@string/test_string"/>-->
@@ -119,7 +119,7 @@
         <!--android:layout_marginRight="15dp"-->
         <!--android:textColor="#fff"-->
         <!--android:textSize="12sp"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/image"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/storyImages"-->
         <!--app:layout_constraintRight_toRightOf="parent"-->
         <!--tools:text="是墁要工"/>-->
 </RelativeLayout>

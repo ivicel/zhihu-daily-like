@@ -28,7 +28,7 @@ Zhihu daily app on Android not offical, only use for personal hobby
         {
             "ga_prefix": "061407",
             "id": 9473585,
-            "image": "https://pic4.zhimg.com/v2-551486bad1002bee255a2403b19cac6b.jpg",
+            "storyImages": "https://pic4.zhimg.com/v2-551486bad1002bee255a2403b19cac6b.jpg",
             "title": "且不说解说的功力，怎么连看台上的人詹俊都能认出来？",
             "type": 0
         }
@@ -76,7 +76,7 @@ story后面是消息的`id`值
   "body": "正文html",
   "image_source": "《梦想启动》",
   "title": "作为知乎上弹钢琴最好的人，来说说我的学习之路",
-  "image": "https://pic4.zhimg.com/v2-7bb2fbc0e07fbf66dfc46e3006c9ef8b.jpg",
+  "storyImages": "https://pic4.zhimg.com/v2-7bb2fbc0e07fbf66dfc46e3006c9ef8b.jpg",
   "share_url": "http://daily.zhihu.com/story/9472025",
   "js": [],
   "ga_prefix": "061307",

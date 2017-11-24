@@ -22,7 +22,8 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/tuna"
             android:id="@+id/article_title"
             tools:text="@string/test_string"/>
 

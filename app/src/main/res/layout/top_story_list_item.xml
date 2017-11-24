@@ -16,18 +16,18 @@
         app:layout_constraintRight_toRightOf="parent"
         android:scaleType="centerCrop"
         tools:src="@mipmap/ic_launcher"
-        android:foreground="#5f000000"
-        android:id="@+id/main_banner_image"
+        android:foreground="@color/dove_gray"
+        android:id="@+id/top_story_image"
         />
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/main_banner_title"
+        android:id="@+id/top_story_title"
         tools:text="且不说解说的功力，怎么连看台上的人詹俊都能认出来？"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/main_banner_image"
+        app:layout_constraintBottom_toBottomOf="@+id/top_story_image"
         android:layout_marginBottom="40dp"
         android:textSize="18sp"
         android:layout_marginLeft="20dp"

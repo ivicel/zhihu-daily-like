@@ -1,22 +1,15 @@
 package github.ivicel.zhihustory.http;
 
-import android.database.sqlite.SQLiteConstraintException;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
-import org.litepal.crud.DataSupport;
+import github.ivicel.zhihustory.gson.SpecifyDayStoryGson;
+import github.ivicel.zhihustory.gson.LatestStoriesGson;
+import github.ivicel.zhihustory.gson.StoryDetailGson;
 
-import java.util.List;
-
-import github.ivicel.zhihustory.db.DatabaseUtil;
-import github.ivicel.zhihustory.db.Image;
-import github.ivicel.zhihustory.db.StoryDetails;
-import github.ivicel.zhihustory.db.Thumbnail;
-import github.ivicel.zhihustory.responsejson.DayStoryJson;
-import github.ivicel.zhihustory.responsejson.LastestStoryJson;
-import github.ivicel.zhihustory.responsejson.StoryContentJson;
+import static github.ivicel.zhihustory.BuildConfig.DEBUG;
 
 /**
  * Created by sedny on 16/06/2017.
@@ -26,50 +19,42 @@ public class ResponseParser {
     private final static String TAG = "ResponseParser";
     
     
-    public static LastestStoryJson parseLatestStory(String response) {
+    public static LatestStoriesGson parseLatestStories(String response) {
+        LatestStoriesGson latestStoriesGson = null;
         try {
-            LastestStoryJson lastestStoryJson;
             Gson gson = new Gson();
-            lastestStoryJson = gson.fromJson(response, LastestStoryJson.class);
-            return lastestStoryJson;
-        } catch (JsonSyntaxException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-    
-    public static DayStoryJson parseDayStoryJson(String response) {
-        Gson gson = new Gson();
-        try {
-            Log.d(TAG, "parseDayStoryJson: " + response);
-            return gson.fromJson(response, DayStoryJson.class);
-        } catch (JsonSyntaxException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-    
-    public static StoryDetails getStoryContent(String response, String date) {
-        Gson gson = new Gson();
-        try {
-            StoryContentJson storyContentJson = gson.fromJson(response, StoryContentJson.class);
-            return DatabaseUtil.saveStoryContent(storyContentJson, date);
-       } catch (JsonSyntaxException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-    
-    public static String getWebContent(String body, List<String> css) {
-        StringBuilder builder = new StringBuilder("<html><head>");
-        if (body != null && css != null) {
-            for (String cssLink : css) {
-                cssLink = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" + cssLink + ">";
-                builder.append(cssLink);
+            latestStoriesGson = gson.fromJson(response, LatestStoriesGson.class);
+        } catch (JsonSyntaxException jse) {
+            if (DEBUG) {
+                Log.e(TAG, "Can't parse latest stoies string to json", jse);
             }
-            String bodyContent = "</head><body>" + body + "</body></html>";
-            builder.append(bodyContent);
         }
-        return builder.toString();
+        return latestStoriesGson;
+    }
+    
+    public static SpecifyDayStoryGson parseSpecifyDayStory(String response) {
+        SpecifyDayStoryGson result = null;
+        Gson gson = new Gson();
+        try {
+            result = gson.fromJson(response, SpecifyDayStoryGson.class);
+        } catch (JsonSyntaxException jse) {
+            if (DEBUG) {
+                Log.e(TAG, "Can't parse specify day string to json", jse);
+            }
+        }
+        return result;
+    }
+    
+    public static StoryDetailGson parseSpecifyStoryDetail(String response) {
+        StoryDetailGson storyDetailGson = null;
+        Gson gson = new Gson();
+        try {
+            storyDetailGson = gson.fromJson(response, StoryDetailGson.class);
+        } catch (JsonSyntaxException jse) {
+            if (DEBUG) {
+                Log.e(TAG, "Can't parse story details to json", jse);
+            }
+        }
+        return storyDetailGson;
     }
 }

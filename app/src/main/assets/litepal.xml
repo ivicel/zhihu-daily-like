@@ -3,10 +3,9 @@
     <dbname value="zhihu.db"/>
     <version value="1"/>
     <list>
-        <mapping class="github.ivicel.zhihustory.db.MainStories"/>
-        <mapping class="github.ivicel.zhihustory.db.StoryDetails"/>
-        <mapping class="github.ivicel.zhihustory.db.TopStories"/>
-        <mapping class="github.ivicel.zhihustory.db.Thumbnail"/>
-        <mapping class="github.ivicel.zhihustory.db.Image"/>
+        <mapping class="github.ivicel.zhihustory.db.Story"/>
+        <mapping class="github.ivicel.zhihustory.db.StoryDetail"/>
+        <mapping class="github.ivicel.zhihustory.db.TopStory"/>
+        <mapping class="github.ivicel.zhihustory.db.StoryImages"/>
     </list>
 </litpal>

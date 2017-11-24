@@ -1,4 +1,4 @@
-package github.ivicel.zhihustory.responsejson;
+package github.ivicel.zhihustory.gson;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -8,12 +8,12 @@ import java.util.List;
  * Created by sedny on 16/06/2017.
  */
 
-public class LastestStoryJson {
+public class LatestStoriesGson {
     @SerializedName("stories")
-    public List<StoryJson> stories;
+    public List<StoryGson> storiesGson;
     
     @SerializedName("top_stories")
-    public List<StoryJson> topStories;
+    public List<StoryGson> topStoriesGson;
     
     @SerializedName("date")
     public String date;

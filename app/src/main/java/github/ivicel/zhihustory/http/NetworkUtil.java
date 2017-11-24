@@ -9,6 +9,9 @@ import android.net.NetworkInfo;
  */
 
 public class NetworkUtil {
+    
+    private NetworkUtil() {}
+    
     public static boolean isNetworkAvailabled(Context context) {
         ConnectivityManager cm =
                 (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);

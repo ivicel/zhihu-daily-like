@@ -1,4 +1,4 @@
-package github.ivicel.zhihustory.responsejson;
+package github.ivicel.zhihustory.gson;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -8,18 +8,20 @@ import java.util.List;
  * Created by sedny on 16/06/2017.
  */
 
-public class StoryJson {
+public class StoryGson {
     @SerializedName("ga_prefix")
-    public String gaPrefix;
+    public String storyPrefix;
     
     @SerializedName("id")
     public String storyId;
     
     @SerializedName("images")
-    public List<String> imageUrls;
+    public List<String> storyImageUrls;
     
+    
+    /* top story banner image */
     @SerializedName("image")
-    public String imageUrl;
+    public String topStoryImage;
     
     @SerializedName("title")
     public String storyTitle;

@@ -6,7 +6,7 @@
     android:id="@+id/main_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="github.ivicel.zhihustory.MainActivity">
+    tools:context="github.ivicel.zhihustory.DailyStoryActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,23 +14,22 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/main_toolbar"
+            android:id="@+id/story_list_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
             android:theme="@style/AppTheme.AppBarOverlay"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            >
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
         </android.support.v7.widget.Toolbar>
 
         <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/main_swipe_refresh_layout"
+            android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/main_recycler_view"
+                android:id="@+id/story_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@android:layout/simple_list_item_1"
