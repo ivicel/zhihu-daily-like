@@ -4,7 +4,7 @@ import org.litepal.crud.DataSupport;
 
 import java.util.List;
 
-import github.ivicel.zhihustory.ArticleDetail;
+import github.ivicel.zhihustory.model.ArticleDetail;
 import github.ivicel.zhihustory.gson.LatestStoriesGson;
 import github.ivicel.zhihustory.http.HttpRequest;
 import github.ivicel.zhihustory.gson.StoryDetailGson;

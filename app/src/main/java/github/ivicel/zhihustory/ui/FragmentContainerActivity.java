@@ -1,4 +1,4 @@
-package github.ivicel.zhihustory;
+package github.ivicel.zhihustory.ui;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 import org.litepal.LitePal;
+
+import github.ivicel.zhihustory.R;
 
 /**
  * Created by Ivicel on 11/10/2017.

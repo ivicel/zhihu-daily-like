@@ -1,4 +1,4 @@
-package github.ivicel.zhihustory;
+package github.ivicel.zhihustory.model;
 
 /**
  * Created by Ivicel on 13/10/2017.

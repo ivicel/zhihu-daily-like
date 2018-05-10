@@ -10,7 +10,7 @@
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="github.ivicel.zhihustory.StoryDetailsActivity"
+        tools:context="github.ivicel.zhihustory.ui.StoryDetailsActivity"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="8dp">
 

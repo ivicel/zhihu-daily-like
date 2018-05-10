@@ -1,33 +1,23 @@
 package github.ivicel.zhihustory;
 
 import android.content.Context;
-import android.database.DataSetObserver;
 import android.graphics.Color;
-import android.os.Handler;
-import android.os.Message;
-import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+
+import github.ivicel.zhihustory.model.Article;
+import github.ivicel.zhihustory.ui.TopStoryItemFragment;
 
 
 public class StoryListItemAdapter extends
@@ -93,8 +83,9 @@ public class StoryListItemAdapter extends
         this.onItemClickListener = onItemClickListener;
     }
     
+    @NonNull
     @Override
-    public ArticleViewHolder onCreateViewHolder(ViewGroup parent, final int viewType) {
+    public ArticleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, final int viewType) {
         mContext = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View v;
@@ -119,7 +110,7 @@ public class StoryListItemAdapter extends
     }
     
     @Override
-    public void onBindViewHolder(ArticleViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ArticleViewHolder holder, int position) {
         if (holder.getItemViewType() == TYPE_VIEW_ITEM) {
             Article article = mStories.get(--position);
             holder.bindArticleView(article);

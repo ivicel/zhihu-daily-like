@@ -1,14 +1,17 @@
-package github.ivicel.zhihustory;
+package github.ivicel.zhihustory.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.TextViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import github.ivicel.zhihustory.model.Article;
+import github.ivicel.zhihustory.R;
+import github.ivicel.zhihustory.StoryController;
 
 /**
  * Created by Ivicel on 11/10/2017.

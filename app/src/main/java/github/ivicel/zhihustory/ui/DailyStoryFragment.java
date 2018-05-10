@@ -1,7 +1,7 @@
-package github.ivicel.zhihustory;
+package github.ivicel.zhihustory.ui;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.icu.text.LocaleDisplayNames;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -25,7 +25,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 
+import github.ivicel.zhihustory.model.Article;
+import github.ivicel.zhihustory.R;
+import github.ivicel.zhihustory.StoryController;
+import github.ivicel.zhihustory.StoryListItemAdapter;
 import github.ivicel.zhihustory.http.HttpRequest;
 import github.ivicel.zhihustory.http.NetworkUtil;
 import okhttp3.Call;
@@ -46,14 +51,13 @@ public class DailyStoryFragment extends Fragment {
     private static final int TYPE_RESPONSE_NEW_LATEST = 2;
     private static final int TYPE_RESPONSE_NEW_STORY = 3;
     
-    
     private DrawerLayout mDrawerLayout;
     private Toolbar mToolbar;
     private RecyclerView mStoryRecyclerView;
     private StoryListItemAdapter mItemAdapter;
     private StoryController mStoryController;
     private SwipeRefreshLayout mRefreshLayout;
-    private Handler mResponseHandler;
+    private ResponseHandler mResponseHandler;
     private boolean mIsLoadingMoreStory = false;
     private LinearLayoutManager mItemLayoutManager;
     private RecyclerView.OnScrollListener mItemScrollerListener;
@@ -90,9 +94,27 @@ public class DailyStoryFragment extends Fragment {
         mItemAdapter = new StoryListItemAdapter(mStoryController.getStories(),
                 mStoryController.getTopStories(), getFragmentManager());
         mItemLayoutManager = new LinearLayoutManager(getContext());
-        mResponseHandler = new ResponseHandler();
+        mResponseHandler = new ResponseHandler(getActivity());
         mItemScrollerListener = new ItemScrollListener();
         
+        mResponseHandler.setMessageHandler(new ResponseHandler.ResponseHandleMessage() {
+            @Override
+            public void handleMessage(Message msg) {
+                stopRefreshing();
+                switch (msg.what) {
+                    case TYPE_RESPONSE_NOTHING:
+                        break;
+                    case TYPE_RESPONSE_NEW_LATEST:
+                        mItemAdapter.notifyNewLatestStories();
+                        break;
+                    case TYPE_RESPONSE_NEW_STORY:
+                        mItemAdapter.notifyItemRangeInserted(msg.arg1, msg.arg2);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
         mItemAdapter.setOnItemClickListener(new StoryListItemAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Article article, boolean isTopStory) {
@@ -254,32 +276,31 @@ public class DailyStoryFragment extends Fragment {
         }
     }
     
-    private class ResponseHandler extends Handler {
-        /*private final WeakReference<Activity> mActivity;
-    
+    /*
+     * @TODO this message handle may cause memory leak, need to fix
+     */
+    private static class ResponseHandler extends Handler {
+        private final WeakReference<Activity> mActivity;
+
         public ResponseHandler(Activity activity) {
             mActivity = new WeakReference<>(activity);
-        }*/
+        }
+        
+        public interface ResponseHandleMessage {
+            void handleMessage(Message msg);
+        }
+        
+        private ResponseHandleMessage mMessageHandler;
+        
+        public void setMessageHandler(ResponseHandleMessage handler) {
+            mMessageHandler = handler;
+        }
         
         @Override
         public void handleMessage(Message msg) {
-            /*Activity activity = mActivity.get();
-            if (activity == null) {
-                return;
-            }*/
-            
-            stopRefreshing();
-            switch (msg.what) {
-                case TYPE_RESPONSE_NOTHING:
-                    break;
-                case TYPE_RESPONSE_NEW_LATEST:
-                    mItemAdapter.notifyNewLatestStories();
-                    break;
-                case TYPE_RESPONSE_NEW_STORY:
-                    mItemAdapter.notifyItemRangeInserted(msg.arg1, msg.arg2);
-                    break;
-                default:
-                    break;
+            Activity activity = mActivity.get();
+            if (activity != null) {
+                mMessageHandler.handleMessage(msg);
             }
         }
     }

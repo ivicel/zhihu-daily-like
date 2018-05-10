@@ -1,4 +1,4 @@
-package github.ivicel.zhihustory;
+package github.ivicel.zhihustory.ui;
 
 import android.content.Context;
 import android.content.Intent;

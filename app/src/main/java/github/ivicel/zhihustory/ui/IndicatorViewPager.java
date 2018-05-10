@@ -1,4 +1,4 @@
-package github.ivicel.zhihustory;
+package github.ivicel.zhihustory.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -13,6 +13,8 @@ import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
 import java.lang.reflect.Field;
+
+import github.ivicel.zhihustory.R;
 
 /**
  * Created by Ivicel on 18/10/2017.
@@ -222,8 +224,10 @@ public class IndicatorViewPager extends ViewPager {
     private Runnable mAutoScrollTask = new Runnable() {
         @Override
         public void run() {
-            int position = (mPosition + 1) % mIndicatorCount;
-            setCurrentItem(position);
+            if (mIndicatorCount != 0) {
+                int position = (mPosition + 1) % mIndicatorCount;
+                setCurrentItem(position);
+            }
         }
     };
 

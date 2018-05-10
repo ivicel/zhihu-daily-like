@@ -17,6 +17,7 @@ import github.ivicel.zhihustory.db.TopStory;
 import github.ivicel.zhihustory.gson.LatestStoriesGson;
 import github.ivicel.zhihustory.gson.SpecifyDayStoryGson;
 import github.ivicel.zhihustory.http.ResponseParser;
+import github.ivicel.zhihustory.model.Article;
 
 import static github.ivicel.zhihustory.BuildConfig.DEBUG;
 

@@ -1,4 +1,4 @@
-package github.ivicel.zhihustory;
+package github.ivicel.zhihustory.model;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
